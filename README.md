@@ -6,3 +6,5 @@
 注意数据库 url: jdbc:sqlite:/usr/local/ds_xhs/ds.db   一定压迫配置自己的地址
 
 使用参考 IndexController 里面的接口
+1. 通过 接口 http://localhost:8888/add/monitor/url?url=     添加关注的 斗音和红薯小姐姐 主页地址
+2. 通过宝塔的计划任务 调用 http://localhost:8888/exe
