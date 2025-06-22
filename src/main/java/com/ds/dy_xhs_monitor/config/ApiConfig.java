@@ -17,4 +17,5 @@ public class ApiConfig {
     private String xhsUrl;
     private String appToken;
     private String sendMessageUrl;
+    private String bibiUrl;
 }
