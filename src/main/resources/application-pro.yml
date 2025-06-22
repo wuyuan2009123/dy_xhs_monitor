@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: dy_xhs_monitor
+  datasource:
+    url: jdbc:sqlite:/usr/local/ds_xhs/ds.db
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
+    hibernate:
+      ddl-auto: update
+api:
+  parse-main-api: https://api.cenguigui.cn/api/douyin/userinfo.php?url=
+  zp-url: https://www.douyin.com/user/
+  proxy-url: http://abc.com #换成自己获取代理ip 的地址
+  zp-count-url: https://api.douyin.wtf/api/douyin/web/handler_user_profile?sec_user_id=
+  xhs-url: https://www.xiaohongshu.com/user/profile/
+  app-token: ATABCCCCCCC # #换成自己获取 app token
+  send-message-url: https://wxpusher.zjiecode.com/api/send/message
+# http://api.mmp.cc/api/dyhome?url=
+# https://api.aa1.cn/doc/douyinauthor.html
+# https://api.makuo.cc/
+server:
+  port: 8888
