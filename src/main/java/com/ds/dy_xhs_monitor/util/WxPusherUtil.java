@@ -57,6 +57,9 @@ public class WxPusherUtil {
         if (StringUtils.hasText(url) && url.contains(".douyin.com")){
             return "斗因";
         }
+        if (StringUtils.hasText(url) && url.contains(".bilibili.com")){
+            return "b站";
+        }
         return "未知";
     }
 
