@@ -24,5 +24,6 @@ api:
 # http://api.mmp.cc/api/dyhome?url=
 # https://api.aa1.cn/doc/douyinauthor.html
 # https://api.makuo.cc/
+# https://api.mir6.com/api/bzjiexi?url=https://www.bilibili.com/video/BV1umNXzfE3K/
 server:
   port: 8888

@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -19,16 +20,16 @@ public class BPageUtil {
     private final RestTemplate restTemplate;
 
 
-    public String getLastTitle(String msId) {
+    public Map<String,String> getLastTitle(String msId) {
         String bibiUrl = apiConfig.getBibiUrl();
         String url = bibiUrl+"1588698599";
         BiBiResponseVo forObject = restTemplate.getForObject(url, BiBiResponseVo.class);
         BiBiResponseVo.OBJ obj = Optional.of(forObject).map(BiBiResponseVo::getData).map(BiBiResponseVo.DataRes::getData).map(BiBiResponseVo.D2::getList).orElse(new BiBiResponseVo.OBJ());
         if (Objects.nonNull(obj.getVlist()) && obj.getVlist().size()>0) {
             BiBiResponseVo.Vlist vlist = obj.getVlist().get(0);
-            return vlist.getTitle();
+            return Map.of("nickName",vlist.getAuthor(),"lastTitle",vlist.getTitle());
         }else {
-            return "N";
+            return Map.of("nickName", "N", "lastTitle", "N");
         }
     }
 

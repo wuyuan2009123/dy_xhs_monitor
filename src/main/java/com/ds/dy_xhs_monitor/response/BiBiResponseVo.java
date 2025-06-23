@@ -31,6 +31,7 @@ public class BiBiResponseVo {
     public static class Vlist {
         private String title;
         private Integer comment;
+        private String author;
     }
 
 }

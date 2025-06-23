@@ -2,7 +2,7 @@ spring:
   application:
     name: dy_xhs_monitor
   datasource:
-    url: jdbc:sqlite:C:/httprunner/demo/pf4j/dy_xhs_monitor/ds.db
+    url: jdbc:sqlite:C:/httprunner/demo/dy_xhs_monitor/ds.db
     driver-class-name: org.sqlite.JDBC
   jpa:
     properties:
