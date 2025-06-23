@@ -28,9 +28,11 @@ public class BiBiProvider implements ParseProvider {
         monitorUser.setParseUrl(url);
         monitorUser.setMsId(msId);
         monitorUser.setCreatedAt(LocalDateTime.now(Clock.systemDefaultZone()));
-        monitorUser.setNickName(map.get("nickName"));
-        log.info("get main zpCount :{}", map.get("lastTitle"));
-        monitorUser.setZpCount(map.get("lastTitle"));
+        String nickName = map.get("nickName");
+        String zpCount = map.get("lastTitle");
+        monitorUser.setNickName(nickName);
+        log.info("get main zpCount :{} , nickName:{}", zpCount,nickName);
+        monitorUser.setZpCount(zpCount);
         return monitorUser;
     }
 
