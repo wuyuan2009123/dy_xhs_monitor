@@ -18,4 +18,5 @@ public class ApiConfig {
     private String appToken;
     private String sendMessageUrl;
     private String bibiUrl;
+    private String qsyUrl;
 }
