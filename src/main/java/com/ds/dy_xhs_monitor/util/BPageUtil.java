@@ -22,7 +22,7 @@ public class BPageUtil {
 
     public Map<String,String> getLastTitle(String msId) {
         String bibiUrl = apiConfig.getBibiUrl();
-        String url = bibiUrl+"1588698599";
+        String url = bibiUrl+msId;
         BiBiResponseVo forObject = restTemplate.getForObject(url, BiBiResponseVo.class);
         BiBiResponseVo.OBJ obj = Optional.of(forObject).map(BiBiResponseVo::getData).map(BiBiResponseVo.DataRes::getData).map(BiBiResponseVo.D2::getList).orElse(new BiBiResponseVo.OBJ());
         if (Objects.nonNull(obj.getVlist()) && obj.getVlist().size()>0) {

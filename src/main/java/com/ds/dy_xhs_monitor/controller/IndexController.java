@@ -10,6 +10,7 @@ import com.ds.dy_xhs_monitor.util.WxPusherUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,8 @@ public class IndexController {
     private final UserMapper userMapper;
     private final WxPusherUtil wxPusherUtil;
     private final ObjectProvider<ParseProvider> parseProviders;
+
+
 
 
     @GetMapping("/add/monitor/url")
@@ -60,10 +63,10 @@ public class IndexController {
         return "email 添加成功:" + save.getPushId();
     }
 
-    @GetMapping("/users")
-    public List<MonitorUser> users() {
-        return monitorUserMapper.findAll();
-    }
+//    @GetMapping("/users")
+//    public List<MonitorUser> users() {
+//        return monitorUserMapper.findAll();
+//    }
 
 
     @GetMapping("/exe")

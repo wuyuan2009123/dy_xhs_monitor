@@ -12,6 +12,10 @@ spring:
         dialect: org.hibernate.community.dialect.SQLiteDialect
     hibernate:
       ddl-auto: update
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
 api:
   parse-main-api: https://api.cenguigui.cn/api/douyin/userinfo.php?url=
   zp-url: https://www.douyin.com/user/

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>IndexController 接口页面</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { width: 300px; padding: 5px; }
+        input[type="submit"] { padding: 5px 10px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #aaa; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+<h2>添加监控 URL</h2>
+<form action="/add/monitor/url" method="get">
+    <input type="text" name="url" placeholder="输入监控 URL" required/>
+    <input type="submit" value="提交"/>
+</form>
+
+<h2>添加 Push ID</h2>
+<form action="/add/push/id" method="get">
+    <input type="text" name="uid" placeholder="输入 Push ID" required/>
+    <input type="submit" value="提交"/>
+</form>
+
+<h2>执行批量任务</h2>
+<form action="/exe" method="get">
+    <input type="submit" value="执行"/>
+</form>
+
+<h2>监控用户列表</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>昵称</th>
+        <th>解析 URL</th>
+        <th>ZP 计数</th>
+        <th>创建时间</th>
+        <th>更新时间</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="monitorUsers" type="java.util.List<com.ds.dy_xhs_monitor.entity.MonitorUser>"*/-->
+    <tr th:each="user : ${monitorUsers}">
+        <td th:text="${user.id}">ID</td>
+        <td th:text="${user.nickName}">昵称</td>
+        <td th:text="${user.parseUrl}">解析 URL</td>
+        <td th:text="${user.zpCount}">ZP 计数</td>
+        <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd HH:mm:ss')}">创建时间</td>
+        <td th:text="${#temporals.format(user.updatedAt, 'yyyy-MM-dd HH:mm:ss')}">更新时间</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
