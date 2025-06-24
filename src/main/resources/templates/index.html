@@ -14,21 +14,41 @@
         th { background-color: #f2f2f2; }
     </style>
 </head>
+
+<script>    // 封装一个函数用于提交表单并刷新页面
+function submitForm(event, url) {
+    event.preventDefault(); // 阻止默认提交行为
+
+    const form = event.target;
+    const formData = new FormData(form);
+    const params = new URLSearchParams(formData);
+
+    fetch(url + '?' + params, {
+        method: 'GET'
+    }).then(() => {
+        location.reload(); // 提交完成后刷新页面
+    }).catch(err => {
+        alert('请求失败，请重试');
+        console.error(err);
+    });
+}
+</script>
+
 <body>
 <h2>添加监控 URL</h2>
-<form action="/add/monitor/url" method="get">
+<form  onsubmit="submitForm(event, '/add/monitor/url')">
     <input type="text" name="url" placeholder="输入监控 URL" required/>
     <input type="submit" value="提交"/>
 </form>
 
 <h2>添加 Push ID</h2>
-<form action="/add/push/id" method="get">
+<form onsubmit="submitForm(event, '/add/push/id')">
     <input type="text" name="uid" placeholder="输入 Push ID" required/>
     <input type="submit" value="提交"/>
 </form>
 
 <h2>执行批量任务</h2>
-<form action="/exe" method="get">
+<form onsubmit="submitForm(event, '/exe')">
     <input type="submit" value="执行"/>
 </form>
 
