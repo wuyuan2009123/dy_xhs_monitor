@@ -32,6 +32,44 @@ function submitForm(event, url) {
         console.error(err);
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    const qsyForm = document.getElementById('qsyForm');
+    const qsyResultDiv = document.getElementById('qsyResult');
+
+    qsyForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const urlParam = document.getElementById('qsyUrlInput').value;
+        const apiUrl = '/qsy?url=' + encodeURIComponent(urlParam);
+
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络响应异常');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // 构建表格 HTML
+                let tableHtml = `                    <h3>接口返回数据</h3>
+                    <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                        <tr><th>字段</th><th>值</th></tr>
+                        <tr><td>状态码 (states)</td><td>${data.success || '-'}</td></tr>
+                        <tr><td>视频链接 (video_url)</td><td>${data.data?.video_url || '-'}</td></tr>
+                        <tr><td>下载url (download_url)</td><td>${data.data?.download_url || '-'}</td></tr>
+                        <tr><td>图片链接 (image_url)</td><td>${data.data?.image_url || '-'}</td></tr>
+                    </table>
+                `;
+                qsyResultDiv.innerHTML = tableHtml;
+            })
+            .catch(error => {
+                qsyResultDiv.innerHTML = `<p style="color:red;">请求失败：${error.message}</p>`;
+                console.error(error);
+            });
+    });
+});
+
 </script>
 
 <body>
@@ -51,6 +89,17 @@ function submitForm(event, url) {
 <form onsubmit="submitForm(event, '/exe')">
     <input type="submit" value="执行"/>
 </form>
+
+
+<h2>调用 QSY 接口</h2>
+<form id="qsyForm">
+    <input type="text" id="qsyUrlInput" name="url" placeholder="输入 URL 参数" required />
+    <input type="submit" value="调用接口" />
+</form>
+
+<!-- 展示接口返回数据 -->
+<div id="qsyResult" style="margin-top: 20px;"></div>
+
 
 <h2>监控用户列表</h2>
 <table>
