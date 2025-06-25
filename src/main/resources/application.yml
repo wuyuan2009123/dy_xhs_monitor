@@ -25,7 +25,7 @@ api:
   app-token: ATABCCCCCCC # #换成自己获取 app token
   send-message-url: https://wxpusher.zjiecode.com/api/send/message
   bibi-url: https://api.douyin.wtf/api/bilibili/web/fetch_user_post_videos?pn=1&uid=
-  qsy-url: https://quapi.podman.store/api/delWatermark?key=admin&openId=o-VEK7pHYfKZiby_zbT4XOTLmIt0&url=
+  qsy-url: https://api.kxzjoker.cn/api/jiexi_video_2?url=
 # http://api.mmp.cc/api/dyhome?url=
 # https://api.aa1.cn/doc/douyinauthor.html
 # https://api.makuo.cc/

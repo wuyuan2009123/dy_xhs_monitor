@@ -3,7 +3,7 @@ package com.ds.dy_xhs_monitor.controller;
 import com.ds.dy_xhs_monitor.config.ApiConfig;
 import com.ds.dy_xhs_monitor.entity.MonitorUser;
 import com.ds.dy_xhs_monitor.mapper.MonitorUserMapper;
-import com.ds.dy_xhs_monitor.response.QsyResponseDataVo;
+import com.ds.dy_xhs_monitor.response.QsyResponseData2Vo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,9 +31,9 @@ public class PageController {
 
     @GetMapping("/qsy")
     @ResponseBody
-    public ResponseEntity<QsyResponseDataVo> qsy(String  url){
+    public ResponseEntity<QsyResponseData2Vo> qsy(String  url){
         String qsyUrl = apiConfig.getQsyUrl();
-        QsyResponseDataVo forObject = restTemplate.getForObject(qsyUrl+url, QsyResponseDataVo.class);
+        QsyResponseData2Vo forObject = restTemplate.getForObject(qsyUrl+url, QsyResponseData2Vo.class);
         return ResponseEntity.ok(forObject);
     }
 }
